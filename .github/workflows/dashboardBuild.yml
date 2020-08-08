@@ -25,8 +25,13 @@ jobs:
       run: cd Dashboard && yarn --network-timeout 1000000000
     - name: Package for Windows
       run: cd Dashboard && yarn pack:win
-    - name: Upload a Build Artifact
+    - name: Upload unpacked files
       uses: actions/upload-artifact@v2
       with:
-        name: Winx64_executable
+        name: LightControl-unpacked
         path: Dashboard/dist/win-unpacked
+    - name: Upload installer
+      uses: actions/upload-artifact@v2
+      with:
+        name: LightControl Setup.exe
+        path: Dashboard/dist/win-unpacked/LightControl Setup.exe
